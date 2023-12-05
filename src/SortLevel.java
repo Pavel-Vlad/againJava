@@ -29,4 +29,26 @@ public class SortLevel {
         }
         return result;
     }
+
+    public static void InsertionSortStep(int[] array, int step, int i) {
+        if (step < 1 || step > array.length - 1) return;
+        if (i < 0 || i > array.length - 1) return;
+
+
+        for (; i < array.length; i += step) {
+            int min = array[i];
+            int indexMin = i;
+            for (int j = i + step; j < array.length; j += step) {
+                if (array[j] < min) {
+                    min = array[j];
+                    indexMin = j;
+                }
+            }
+            if (min != array[i]) {
+                int tempVar = array[i];
+                array[i] = array[indexMin];
+                array[indexMin] = tempVar;
+            }
+        }
+    }
 }
