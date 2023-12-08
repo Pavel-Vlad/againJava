@@ -52,7 +52,6 @@ public class SortLevel {
                 array[i] = array[indexMin];
                 array[indexMin] = tempVar;
             }
-            System.out.println(Arrays.toString(array));
         }
     }
 
