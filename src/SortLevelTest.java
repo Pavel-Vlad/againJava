@@ -1,9 +1,5 @@
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,5 +24,19 @@ class SortLevelTest {
         SortLevel.InsertionSortStep(array, 1, 0);
         assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6, 7}, array);
 
+    }
+
+    @Test
+    void KnuthSequence() {
+        assertEquals(0, SortLevel.KnuthSequence(-1).size());
+        assertEquals(3, SortLevel.KnuthSequence(15).size());
+        assertEquals(6, SortLevel.KnuthSequence(400).size());
+
+
+    }
+    @Test
+    void SortShell() {
+        SortLevel.SortShell(array);
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6, 7}, array);
     }
 }

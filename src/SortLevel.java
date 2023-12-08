@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class SortLevel {
     public static void SelectionSortStep(int[] array, int i) {
         if (i < 0 || i > array.length - 2) return;
@@ -49,6 +52,40 @@ public class SortLevel {
                 array[i] = array[indexMin];
                 array[indexMin] = tempVar;
             }
+            System.out.println(Arrays.toString(array));
         }
     }
+
+    /**
+     * интервальная последовательность кнута
+     *
+     * @param array_size - размер сортируемого массива
+     * @return ArrayList<Integer>
+     */
+    public static ArrayList<Integer> KnuthSequence(int array_size) {
+        ArrayList<Integer> resultList = new ArrayList<Integer>();
+
+        int elSequence = 1;
+        while (elSequence < array_size) {
+            resultList.add(0, elSequence);
+            elSequence = 3 * resultList.get(0) + 1;
+        }
+
+        return resultList;
+    }
+
+    /**
+     * сортировка Шелла
+     *
+     * @param array - сортируемый массив целых чисел
+     */
+    public static void SortShell(int[] array) {
+        ArrayList<Integer> listSteps = KnuthSequence(array.length);
+        for (int step: listSteps) {
+            for (int i = 0; i < step; i++) {
+                InsertionSortStep(array, step, i);
+            }
+        }
+    }
+
 }
