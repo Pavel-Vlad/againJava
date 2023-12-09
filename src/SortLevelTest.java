@@ -31,6 +31,7 @@ class SortLevelTest {
         assertEquals(0, SortLevel.KnuthSequence(-1).size());
         assertEquals(3, SortLevel.KnuthSequence(15).size());
         assertEquals(6, SortLevel.KnuthSequence(400).size());
+        assertEquals(1, SortLevel.KnuthSequence(1).size());
 
 
     }

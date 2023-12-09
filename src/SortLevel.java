@@ -65,11 +65,10 @@ public class SortLevel {
         ArrayList<Integer> resultList = new ArrayList<Integer>();
 
         int elSequence = 1;
-        while (elSequence < array_size) {
+        while (elSequence <= array_size) {
             resultList.add(0, elSequence);
-            elSequence = 3 * resultList.get(0) + 1;
+            elSequence = 3 * elSequence + 1;
         }
-
         return resultList;
     }
 
