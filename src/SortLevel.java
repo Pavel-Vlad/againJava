@@ -93,13 +93,27 @@ public class SortLevel {
      * @param M - массив
      * @return int - нидекс опорного элемента
      */
+
     public static int ArrayChunk(int[] M) {
-        if (M.length <= 1) return 0;
+        return ArrayChunk(M, 0, M.length - 1);
+    }
+
+    /**
+     * Модификация для QuickSort
+     *
+     * @param M
+     * @param left
+     * @param right
+     * @return
+     */
+    public static int ArrayChunk(int[] M, int left, int right) {
+        int length = right - left + 1;
+        if (length <= 1) return 0;
         int iN, N, i1, i2;
-        iN = M.length / 2;
+        iN = left + length / 2;
         N = M[iN];
-        i1 = 0;
-        i2 = M.length - 1;
+        i1 = left;
+        i2 = right;
         while (i1 != i2) {
             while (M[i1] < N) i1++;
             while (M[i2] > N) i2--;
@@ -109,7 +123,7 @@ public class SortLevel {
                 M[i2] = tempEl;
                 N = M[iN];
                 i1 = 0;
-                i2 = M.length - 1;
+                i2 = length - 1;
                 continue;
             }
 
@@ -121,5 +135,19 @@ public class SortLevel {
             if (M[i2] == N) iN = i2;
         }
         return iN;
+    }
+
+    /**
+     * Быстрая сортировка Хоара
+     *
+     * @param array - массив
+     * @param left  - левый индекс в алгоритме разбиения
+     * @param right - правый индекс в алгоритме разбиения
+     */
+    public static void QuickSort(int[] array, int left, int right) {
+        if (left >= right || right >= array.length || left < 0) return;
+        int iN = ArrayChunk(array, left, right);
+        QuickSort(array, left, iN - 1);
+        QuickSort(array, iN + 1, right);
     }
 }
