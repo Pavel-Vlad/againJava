@@ -43,8 +43,9 @@ class SortLevelTest {
 
     @Test
     void QuickSort() {
+        SortLevel.QuickSort(array, 2,5);
+        assertArrayEquals(new int[]{7, 6, 2, 3, 4, 5, 1}, array);
         SortLevel.QuickSort(array, 0,6);
         assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6, 7}, array);
-
     }
 }

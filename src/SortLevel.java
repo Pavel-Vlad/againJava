@@ -122,8 +122,8 @@ public class SortLevel {
                 M[i1] = M[i2];
                 M[i2] = tempEl;
                 N = M[iN];
-                i1 = 0;
-                i2 = length - 1;
+                i1 = left;
+                i2 = right;
                 continue;
             }
 
