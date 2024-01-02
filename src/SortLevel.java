@@ -150,4 +150,25 @@ public class SortLevel {
         QuickSort(array, left, iN - 1);
         QuickSort(array, iN + 1, right);
     }
+
+    /**
+     * Элиминация хвостовой рекурсии
+     *
+     * @param array
+     * @param left
+     * @param right
+     */
+    public static void QuickSortTailOptimization(int[] array, int left, int right) {
+        if (left >= right || right >= array.length || left < 0) return;
+        while (left < right) {
+            int N = ArrayChunk(array, left, right);
+            if (N - left < right - N) {
+                QuickSortTailOptimization(array, left, N - 1);
+                left = N + 1;
+            } else {
+                QuickSortTailOptimization(array, N + 1, right);
+                right = N - 1;
+            }
+        }
+    }
 }
