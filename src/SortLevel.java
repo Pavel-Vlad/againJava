@@ -171,4 +171,21 @@ public class SortLevel {
             }
         }
     }
+
+    /**
+     * Поиск порядковых статистик - один шаг
+     *
+     * @param Array
+     * @param L
+     * @param R
+     * @param k
+     * @return
+     */
+    public static ArrayList<Integer> KthOrderStatisticsStep(int[] Array, int L, int R, int k) {
+        if (L > R) return new ArrayList<>();
+        int N = ArrayChunk(Array, L, R);
+        if (N == k) return new ArrayList<>(Arrays.asList(N, N));
+        if (N < k) return new ArrayList<>(Arrays.asList(N + 1, R));
+        return new ArrayList<>(Arrays.asList(L, N - 1));
+    }
 }
