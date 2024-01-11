@@ -188,4 +188,49 @@ public class SortLevel {
         if (N < k) return new ArrayList<>(Arrays.asList(N + 1, R));
         return new ArrayList<>(Arrays.asList(L, N - 1));
     }
+
+
+    /**
+     * Сортировка слиянием
+     *
+     * @param Array
+     * @return
+     */
+    public static ArrayList<Integer> MergeSort(ArrayList<Integer> Array) {
+        int length = Array.toArray().length;
+        if (length <= 1) return Array;
+
+        ArrayList<Integer> ArrayA = new ArrayList<>(Array.subList(0, length / 2));
+        ArrayList<Integer> ArrayB = new ArrayList<>(Array.subList(length / 2, length));
+
+        ArrayA = MergeSort(ArrayA);
+        ArrayB = MergeSort(ArrayB);
+
+        ArrayList<Integer> result = new ArrayList<>(length);
+
+        while (ArrayA.toArray().length > 0 && ArrayB.toArray().length > 0) {
+            int elA = ArrayA.iterator().next();
+            int elB = ArrayB.iterator().next();
+
+            if (elA < elB) {
+                result.add(elA);
+                ArrayA.remove(0);
+            } else {
+                result.add(elB);
+                ArrayB.remove(0);
+            }
+        }
+
+        while (ArrayA.toArray().length > 0) {
+            result.add(ArrayA.iterator().next());
+            ArrayA.remove(0);
+        }
+        while (ArrayB.toArray().length > 0) {
+            result.add(ArrayB.iterator().next());
+            ArrayB.remove(0);
+        }
+
+        return result;
+    }
+
 }
