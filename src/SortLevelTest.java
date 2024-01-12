@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import structures.Heap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -75,5 +76,15 @@ class SortLevelTest {
         ArrayList<Integer> list = SortLevel.MergeSort(array);
         ArrayList<Integer> expected = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 22, 43, 53, 55));
         assertArrayEquals(expected.toArray(), list.toArray());
+    }
+
+    @Test
+    void GetNextMax() {
+        array = new int[]{11,4,7};
+        HeapSort testHeap = new HeapSort(array);
+        assertEquals(11, testHeap.GetNextMax());
+        assertEquals(7, testHeap.GetNextMax());
+        assertEquals(4, testHeap.GetNextMax());
+        assertEquals(-1, testHeap.GetNextMax());
     }
 }
