@@ -80,11 +80,15 @@ class SortLevelTest {
 
     @Test
     void GetNextMax() {
-        array = new int[]{11,4,7};
+        array = new int[]{1,11,4,7};
         HeapSort testHeap = new HeapSort(array);
         assertEquals(11, testHeap.GetNextMax());
         assertEquals(7, testHeap.GetNextMax());
         assertEquals(4, testHeap.GetNextMax());
+        assertEquals(1, testHeap.GetNextMax());
         assertEquals(-1, testHeap.GetNextMax());
+        array = new int[]{};
+        HeapSort testHeap1 = new HeapSort(array);
+        assertEquals(-1, testHeap1.GetNextMax());
     }
 }
