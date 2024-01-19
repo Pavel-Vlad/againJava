@@ -22,27 +22,23 @@ class Heap {
     private int lastIndex = -1; // index of last element in HeapArray
 
     public Heap() {
-        HeapArray = new int[1];
+        HeapArray = null;
     }
 
     // create HeapArray from given array
     // heapArray size based on depth
     public void MakeHeap(int[] a, int depth) {
         if (a == null) return; //
-        int arSize = (int) (Math.pow(2, (depth + 1))) - 1;
-        HeapArray = new int[arSize];
+        HeapArray = new int[depth];
         Arrays.fill(HeapArray, -1);
-        for (int i : a) {
-            Add(i);
-        }
     }
 
     // return root value and rebuild heap
     public int GetMax() {
-        if (HeapArray == null || HeapArray[0] == -1) return -1; // if heap is null or empty
+        if (HeapArray == null || lastIndex < 0) return -1; // if heap is null or empty
         int res = HeapArray[0];
         int indexTemp = 0;
-        HeapArray[indexTemp] = -1;
+
         HeapArray[indexTemp] = HeapArray[lastIndex];
         HeapArray[lastIndex] = -1;
         lastIndex--;
@@ -50,7 +46,7 @@ class Heap {
             while (true) {
                 int indexLeftChild = 2 * indexTemp + 1;
                 int indexRightChild = 2 * indexTemp + 2;
-                if (indexRightChild > HeapArray.length) break;
+                if (indexRightChild >= HeapArray.length) break;
                 int indexMaxChild = HeapArray[indexLeftChild] > HeapArray[indexRightChild] ? indexLeftChild : indexRightChild;
                 if (HeapArray[indexMaxChild] > HeapArray[indexTemp]) {
                     int el = HeapArray[indexTemp];
@@ -69,7 +65,6 @@ class Heap {
         int indexKey = 0;
         int indexParent;
         for (; indexKey < HeapArray.length; indexKey++) {
-            if (HeapArray[indexKey] == key) return true;
             if (HeapArray[indexKey] == -1) {
                 HeapArray[indexKey] = key;
                 lastIndex = indexKey;

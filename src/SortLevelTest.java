@@ -80,15 +80,25 @@ class SortLevelTest {
 
     @Test
     void GetNextMax() {
-        array = new int[]{1,11,4,7};
-        HeapSort testHeap = new HeapSort(array);
-        assertEquals(11, testHeap.GetNextMax());
-        assertEquals(7, testHeap.GetNextMax());
-        assertEquals(4, testHeap.GetNextMax());
-        assertEquals(1, testHeap.GetNextMax());
-        assertEquals(-1, testHeap.GetNextMax());
-        array = new int[]{};
+        array = new int[]{3, 5, 2, 4, 1, 55, 55, 43, 22, 6, 7, 8, 53};
         HeapSort testHeap1 = new HeapSort(array);
+        assertEquals(55, testHeap1.GetNextMax());
+        assertEquals(55, testHeap1.GetNextMax());
+        assertEquals(53, testHeap1.GetNextMax());
+        assertEquals(43, testHeap1.GetNextMax());
+        assertEquals(22, testHeap1.GetNextMax());
+        assertEquals(8, testHeap1.GetNextMax());
+        assertEquals(7, testHeap1.GetNextMax());
+        assertEquals(6, testHeap1.GetNextMax());
+        assertEquals(5, testHeap1.GetNextMax());
+        assertEquals(4, testHeap1.GetNextMax());
+        assertEquals(3, testHeap1.GetNextMax());
+        assertEquals(2, testHeap1.GetNextMax());
+        assertEquals(1, testHeap1.GetNextMax());
         assertEquals(-1, testHeap1.GetNextMax());
+
+        array = new int[]{};
+        HeapSort testHeap2 = new HeapSort(array);
+        assertEquals(-1, testHeap2.GetNextMax());
     }
 }
